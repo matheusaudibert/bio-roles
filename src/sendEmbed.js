@@ -41,7 +41,7 @@ async function sendEmbedWithButton(client) {
         )
         .addTextDisplayComponents(
           new TextDisplayBuilder().setContent(
-            "Para ganhar o cargo <@&1409756076794187846> você deve **utilizar o convite do servidor na sua biografia do Discord**, como no exemplo ao lado:"
+            "Para ganhar o cargo <@&1409756076794187846> você deve **ser membro do servidor há pelo menos 1 mês** e **utilizar o convite do servidor na sua biografia do Discord**, como no exemplo ao lado:"
           ),
           new TextDisplayBuilder().setContent(
             "Os convites aceitos para receber o cargo são: \n- _**https://discord.gg/programador**_\n- _**.gg/programador**_\n- _**gg/programador**_\n- _**/programador**_"
