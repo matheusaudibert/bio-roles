@@ -20,7 +20,7 @@ async function sendEmbedWithButton(client) {
       new SectionBuilder()
         .setThumbnailAccessory(
           new ThumbnailBuilder().setURL(
-            "https://cdn3.emoji.gg/temp/68ae9b3bb9dca4.42825936_hqpilkegjfnmo.png"
+            "https://cdn3.emoji.gg/emojis/950972-embaixador.png"
           )
         )
         .addTextDisplayComponents(
