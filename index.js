@@ -22,7 +22,6 @@ const client = new Client({
 client.once("ready", async () => {
   console.log(`Bot está online como ${client.user.tag}`);
 
-  // Define o status do bot
   client.user.setActivity("ur bios 🍃", {
     type: ActivityType.Watching,
   });
@@ -30,7 +29,6 @@ client.once("ready", async () => {
   const channelId = process.env.CHANNEL_ID;
   const channel = await client.channels.fetch(channelId);
 
-  // Apaga todas as mensagens do canal
   let fetched;
   do {
     fetched = await channel.messages.fetch({ limit: 100 });
@@ -39,10 +37,8 @@ client.once("ready", async () => {
     }
   } while (fetched.size >= 2);
 
-  // Envia o embed com botão
   await sendEmbedWithButton(client);
 
-  // Inicia o loop de verificação automática
   startCheckLoop(client);
 });
 
@@ -53,7 +49,7 @@ process.on("uncaughtException", (err) => {
   console.error("Uncaught exception:", err);
 });
 
-const cooldownMap = new Map(); // userId -> timestamp
+const cooldownMap = new Map();
 
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isButton()) return;
@@ -65,7 +61,6 @@ client.on("interactionCreate", async (interaction) => {
     const cargoId = process.env.CARGO;
     let container = new ContainerBuilder();
 
-    // Verifica se já possui o cargo
     if (interaction.member.roles.cache.has(cargoId)) {
       container.addTextDisplayComponents(
         new TextDisplayBuilder().setContent(
@@ -80,7 +75,6 @@ client.on("interactionCreate", async (interaction) => {
       return;
     }
 
-    // Verifica se está há mais de 1 mês no servidor
     const joinedTimestamp = interaction.member.joinedTimestamp;
     const now = Date.now();
     const oneMonthMs = 30 * 24 * 60 * 60 * 1000;
@@ -98,7 +92,6 @@ client.on("interactionCreate", async (interaction) => {
       return;
     }
 
-    // Cooldown de 2 minutos por usuário
     const userId = interaction.user.id;
     const lastUsed = cooldownMap.get(userId) || 0;
     const cooldownMs = 2 * 60 * 1000;
@@ -117,10 +110,8 @@ client.on("interactionCreate", async (interaction) => {
     }
     cooldownMap.set(userId, now);
 
-    // Busca a bio na API
     const bio = await getDiscordProfile(userId);
 
-    // Verifica se a bio contém algum dos convites
     const hasInvite =
       bio &&
       (bio.includes("https://discord.gg/programador") ||
@@ -129,7 +120,6 @@ client.on("interactionCreate", async (interaction) => {
         bio.includes("/programador"));
 
     if (hasInvite) {
-      // Usa addRole.js para adicionar o cargo ao membro
       const success = await addRole(interaction.member, cargoId);
       if (success) {
         container.addTextDisplayComponents(
@@ -171,9 +161,7 @@ client.on("interactionCreate", async (interaction) => {
           ephemeral: true,
         });
       }
-    } catch (e) {
-      // Ignora erros de resposta desconhecida
-    }
+    } catch (e) {}
   }
 });
 

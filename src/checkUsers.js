@@ -25,7 +25,6 @@ async function checkNextAmbassador(client) {
     if (memberQueue.length === 0) return;
   }
 
-  // Pega o próximo membro da fila
   const member = memberQueue[queueIndex % memberQueue.length];
   queueIndex++;
 
@@ -47,10 +46,11 @@ async function checkNextAmbassador(client) {
 }
 
 function startCheckLoop(client) {
-  updateQueue(client); // Inicializa a fila
+  console.log("Iniciando verificação periódica de embaixadores...");
+  updateQueue(client);
   setInterval(() => {
     checkNextAmbassador(client);
-  }, 10 * 60 * 1000); // 10 minutos
+  }, 10 * 60 * 1000);
 }
 
 module.exports = { startCheckLoop };
