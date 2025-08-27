@@ -24,9 +24,7 @@ async function sendEmbedWithButton(client) {
           )
         )
         .addTextDisplayComponents(
-          new TextDisplayBuilder().setContent(
-            "# Ganhe seu cargo de embaixador!"
-          ),
+          new TextDisplayBuilder().setContent("# Torne-se um embaixador"),
           new TextDisplayBuilder().setContent(
             "Aqui no **Servidor dos Programadores** temos um sistema de **Embaixadores**: membros que ajudam a divulgar e fortalecer nossa comunidade."
           )
