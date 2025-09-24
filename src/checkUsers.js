@@ -17,6 +17,7 @@ async function updateQueue(client) {
       memberQueue.push(member);
     }
   }
+  console.log(`Fila atualizada com ${memberQueue.length} membros.`);
 }
 
 async function checkNextAmbassador(client) {
@@ -50,7 +51,7 @@ function startCheckLoop(client) {
   updateQueue(client);
   setInterval(() => {
     checkNextAmbassador(client);
-  }, 10 * 60 * 1000);
+  }, 60 * 1000);
 }
 
 module.exports = { startCheckLoop };
