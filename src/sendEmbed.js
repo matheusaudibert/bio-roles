@@ -25,7 +25,7 @@ async function sendEmbedWithButton(client) {
 
   const text1 = new TextDisplayBuilder().setContent("# Torne-se um embaixador");
   const text2 = new TextDisplayBuilder().setContent("Aqui no **Servidor dos Programadores**  temos um sistema de **Embaixadores**: membros que ajudam a divulgar e fortalecer nossa comunidade.");
-  const text3 = new TextDisplayBuilder().setContent("Para ganhar o cargo **<@&1409756076794187847>** você deve ser __membro do servidor há pelo menos 1 mês__ e __utilizar o convite do servidor na sua biografia do Discord__.");
+  const text3 = new TextDisplayBuilder().setContent("Para ganhar o cargo **<@&1409756076794187846>** você deve ser __membro do servidor há pelo menos 1 mês__ e __utilizar o convite do servidor na sua biografia do Discord__.");
   const text4 = new TextDisplayBuilder().setContent("Os convites aceitos para receber o cargo são: ");
   const text5 = new TextDisplayBuilder().setContent("- **https://discord.gg/programador**\n- **.gg/programador**\n- **gg/programador**\n- **/programador**");
   const text6 = new TextDisplayBuilder().setContent("Para receber o seu cargo basta clicar no botão abaixo que o bot verificará a sua biografia.");
